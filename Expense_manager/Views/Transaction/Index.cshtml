@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Expense_manager.Models.Transaction>
+
+@{
+
+    ViewData["PageTitle"] = "Transaction";
+    ViewData["PageActionText"] = "+New Transaction";
+    ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
+
+}
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="Transactions" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="8"></e-grid-pagesettings>
+
+
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" field="Date" width="150px" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Amount" field="plusorminusamount" textAlign="Right" width="100px"></e-grid-column>
+                <e-grid-column headerText="Action" template="#Actiontypecolumn" width="100px"></e-grid-column>
+            </e-grid-columns>
+
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b30">
+            <span class="e-icons e-edit"></span>
+        </div>
+    </div>
+
+</div>
+
+<script id="Actiontypecolumn" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start" >
+         <a class="btn btn-sm link-style" href="/Transaction/AddOrEdit/${TransactionId}">
+         <span class="e-icons e-edit"></span>
+            </a>
+
+             <form action="/Transaction/Delete/${TransactionId}" method="post">
+    @Html.AntiForgeryToken()
+                 <button type="submit" class="btn btn-danger link-style" onclick="return confirm(&quot;Are you sure&quot;)">
+                              <span class="e-icons e-trash"></span>
+
+
+                              </button>
+                              </form>
+
+    </div>
+
+
+
+</script>
+   

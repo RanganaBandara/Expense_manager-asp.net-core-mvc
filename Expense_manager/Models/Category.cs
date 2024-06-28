@@ -10,6 +10,8 @@ namespace Expense_manager.Models
 
 
         [Column(TypeName = "nvarchar(50)")]
+
+        [Required(ErrorMessage ="Enter a valid Title")]
         public string title { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
@@ -17,5 +19,16 @@ namespace Expense_manager.Models
 
         [Column(TypeName = "nvarchar(10)")]
         public string Type { get; set; } = "Expenses";
-    }
+
+        [NotMapped]
+        public string? iconwithtitle
+        {
+
+            get
+            {
+
+                return this.icon + this.title;
+            }
+        }
+          }
 }

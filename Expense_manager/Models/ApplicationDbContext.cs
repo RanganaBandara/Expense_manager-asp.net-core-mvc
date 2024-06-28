@@ -6,10 +6,14 @@ namespace Expense_manager.Models
     {
         public ApplicationDbContext( DbContextOptions options):base(options)
         { 
+
         }
 
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
+
+
+
     }
 }

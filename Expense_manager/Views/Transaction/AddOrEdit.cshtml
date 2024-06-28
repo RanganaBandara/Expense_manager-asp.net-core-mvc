@@ -1,0 +1,74 @@
+﻿@model Expense_manager.Models.Transaction
+
+@{
+    ViewData["PageTitle"] = Model.TransactionId== 0 ? "Create New Transaction" : "Edit Transaction";
+
+}
+
+
+
+<div class="row">
+    <div class="col-md-7 widget p-5">
+        <form asp-action="AddorEdit">
+            
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="TransactionId" value="@Model.TransactionId" />
+
+            <div class="mb-3">
+                <ejs-datepicker id="date" ejs-for="Date" format="yyyy-MM-dd" placeholder="Date" floatLabelType="Always"></ejs-datepicker>
+
+            </div>
+            <div class="mb-3">
+                <ejs-dropdownlist id="Category" ejs-for="CategoryId" allowFiltering="true" popupHeight="200px" dataSource="@ViewBag.Categories" placeholder="Category" floatLabelType="Always" ignoreAccent="true" filterType="Contains">
+                    <e-dropdownlist-fields value="CategoryId" text="iconwithtitle"></e-dropdownlist-fields>
+                </ejs-dropdownlist>
+                <span asp-validation-for="CategoryId" class="text-danger fs-6"></span>
+
+            </div>
+            <div class="mb-3">
+                <ejs-numerictextbox id="amount" ejs-for="Amount" validateDecimalOnType="true" decimals="3" format="n3" placeholder="Amount" floatLabelType="Auto" min="0"></ejs-numerictextbox>
+
+                <span asp-validation-for="Amount" class="text-danger fs-6"></span>
+            </div>
+            <div class="mb-3">
+                   <ejs-textbox id="note" ejs-for="Note" multiline="true" floatLabelType="Auto"
+                 placeholder="Note"></ejs-textbox>
+
+            </div>
+            
+            <div class="mb-3">
+                @{
+                    if(Model.TransactionId==0){
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                }
+                else{
+                 <input type="submit" value="Update" class="btn btn-primary" />
+                }
+                 }
+                              
+            </div>
+        </form>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100  d-flex justify-content-center align-items-center" style="background-color:#212b30">
+            <span class="e-icons e-display"></span>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+@*@section Scripts {
+    @{
+    
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    
+        
+    }
+}
+*@

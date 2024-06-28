@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Expense_manager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240525165201_initial migration")]
-    partial class initialmigration
+    [Migration("20240603075051_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,7 +73,20 @@ namespace Expense_manager.Migrations
 
                     b.HasKey("TransactionId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("Expense_manager.Models.Transaction", b =>
+                {
+                    b.HasOne("Expense_manager.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

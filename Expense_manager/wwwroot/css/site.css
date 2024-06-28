@@ -51,3 +51,74 @@ e-bigger{
     color: #212b30;
     border: 1px solid #fff;
 }
+
+/*maincontent/*/
+.main-content {
+    margin-left: 290px;
+}
+/*sidebar*/
+.sidebar{
+    background-color:#343c04;
+    border-right:1px dashed rgba(75,82,85,0.24);
+    padding:10px 20px;
+}
+
+
+
+/*widget*/
+
+.widget{
+    border-radius: 1rem;
+    background-color:#212b30;
+}
+
+
+    .widget.sum>div:first-child{
+        background-color:#5e5f4e;
+        padding:1rem;
+        border-top-left-radius:1rem;
+        border-bottom-left-radius:1rem;
+    }
+    .widget.sum>div:first-child i{
+        font-weight:bold;
+    }
+    .widget.income>div:first-child{
+        color:#45de3f;
+    }
+    .widget.expense>div:first-child{
+        color:#e06043;
+    }
+    .widget.balance > div:first-child {
+        color: #cad354;
+    }
+    .widget.chart {
+        padding: 5px;
+        
+    }
+
+    
+
+
+/*icons*/
+.e-icons {  
+    color:#0c56ee;
+    font-size: 250px;
+}
+/*pencilbuttonlink*/
+.btn:focus,.btn:active{
+    outline:none !important;
+    box-shadow:none;
+}
+/*hyperlinkstyle*/
+.link-style,.link-style:hover{
+    text-decoration:none;
+    color:white;
+}
+.btn-success-btn, .btn-success-btn:hover {
+    background-color: #1f6404;
+    color:white !important;
+    
+}
+.e-display{
+    color:#1cf70b !important;
+}
